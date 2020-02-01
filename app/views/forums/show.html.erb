@@ -1,0 +1,38 @@
+<div class="columns">
+  <div class="column is-8">
+    <h1 class="title is-2 has-text-grey discussion-title"><%= @forum.title %></h1>
+    <h3 class="subtitle is-5 has-text-grey-lighter">by <%= @forum.user.username %> in <%= link_to @forum.subject.subject, @forum.subject %></h3>
+    <div class="level">
+      <div class="level-left"></div>
+      <div class="level-right">
+        <%# if forum_author(@forum) %>
+        <div class="buttons">
+            <%= link_to 'Edit Forum', edit_forum_path(@forum), class:'button'%>
+            <%= link_to 'Delete', forum_path(@forum), method: :delete, data: { confirm: "Delete forum?" }, class:'button' %>
+        </div>
+        <%# end %>
+      </div>
+    </div>
+    <div class="content"><%#= markdown(@forum.content) %></div>
+
+    <h2 class="subtitle is-5 has-text-grey"><%= @forum.replies.count %> Replies</h2>
+
+    <div id="discussion-replies">
+      <%#= render @forum.replies %>
+    </div>
+
+    <hr />
+
+    <h3 class="subtitle is-3 has-text-grey">Leave a reply</h3>
+    <% if user_signed_in? %>
+      <%#= render 'replies/form' %>
+    <% else %>
+    <p>To reply you need to <%= link_to 'login', new_user_session_path %>. Don't have an account?
+      <%= link_to 'Sign up', new_user_registration_path %> for one.</p>
+    <% end %>
+
+  </div>
+
+  <%= render 'sidebar' %>
+
+</div>

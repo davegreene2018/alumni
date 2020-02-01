@@ -1,0 +1,36 @@
+<div class="column is-8">
+  <h3 class="title is-5 has-text-grey-light">Latest forum posts</h3>
+  <div class="forums">
+    <% @forums.each do |forum| %>
+      <div class="columns bb-not-last pv10">
+        <div class="column is-1">
+          <%= gravatar_image_tag(forum.user.email, class:'border-radius-50', size: 48, alt: forum.user.username) %>
+        </div>
+        <div class="column is-8">
+          <%= link_to forum do %>
+            <h3 class="title is-5"><%= forum.title %></h3>
+          <% end %>
+          <div class="content">
+            <%#= truncate(strip_markdown(forum.content), length: 140) %>
+            <p><em><small>Posted <%= time_ago_in_words(forum.created_at) %> ago in
+              <% if forum.subject %>
+                <%= link_to forum.subject.subject, forum.subject %>
+              <% end %>
+              by <%= forum.user.username %>
+              </small>
+              </em>
+            </p>
+          </div>
+        </div>
+
+        <%# if forum_author(forum) || has_role?(:admin) %>
+        <div class="column has-text-right">
+          <%= link_to 'Edit', edit_forum_path(forum), class:'button' %>
+          <%= link_to 'Delete', forum, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
+        </div>
+        <%# end %>
+
+      </div>
+    <% end %>
+  </div>
+</div>

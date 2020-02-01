@@ -1,0 +1,14 @@
+<div class="column is-3 is-offset-1">
+  <h3 class="title is-5 has-text-grey-light">Subjects</h3>
+
+  <ul class="list">
+    <% @subjects.each do |s| %>
+    <li><%= link_to s.subject, s %></li>
+    <% end %>
+  </ul>
+
+  <br/>
+
+  
+
+</div>
