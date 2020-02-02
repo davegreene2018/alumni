@@ -15,6 +15,7 @@
  */
 
 @import "bulma";
+@import "functions";
 
 
 .image {
@@ -35,7 +36,7 @@
   padding: 1rem;
 }
 
-.discussion-title {
+.forum-title {
   margin-bottom: 0;
 }
 

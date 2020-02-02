@@ -1,0 +1,60 @@
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-48x48">
+        <%= gravatar_image_tag(reply.user.email, class: 'border-radius-50', size: 48, alt: reply.user.username) %>
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= reply.user.username %></strong> <small><%= time_ago_in_words(reply.created_at) %></small>
+          <br/>
+          <%= reply.reply %>
+        </p>
+      </div>
+      <%# if reply_author(reply) || has_role?(:admin) %>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item">
+           
+            <%= reply.votes %>
+            
+          </a>
+          <a class="level-item">
+           <a href="/replies/like/<%= reply.id %>">
+            <span class="icon is-small"title="<%= reply.id %>"><i class="fa fa-thumbs-up"></i></span>
+            </a>
+          </a>
+          <a class="level-item">
+           
+            
+            
+          </a>
+           <a class="level-item">
+           
+            <%= reply.votes %>
+            
+          </a>
+          <a class="level-item">
+           
+           <span class="icon is-small"><i class="fa fa-thumbs-down"></i></span>
+            
+          </a>
+          <a class="level-item">
+            <%= link_to edit_forum_reply_path(reply.forum, reply) do %>
+            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
+            <%# end %>
+          </a>
+          <a class="level-item">
+            <%= link_to [reply.forum, reply],
+                method: :delete, data: {confirm: "Are you sure ?" } do %>
+            <span class="icon is-small"><i class="fa fa-trash-o"></i></span>
+            <% end %>
+          </a>
+        </div>
+      </nav>
+      <% end %>
+    </div>
+  </article>
+</div>

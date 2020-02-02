@@ -1,16 +1,17 @@
 class RepliesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_reply, only: [:edit, :update, :show, :destroy]
+  before_action :set_reply, only: [:edit, :update, :show, :destroy, :like]
   before_action :set_forum, only: [:create, :edit, :show, :update, :destroy]
 
   def create
-    @reply = @forum.replies.create(params[:reply].permit(:reply, :forum_id))
+    @reply = @forum.replies.create(params[:reply].permit(:reply, :forum_id, :votes))
     @reply.user_id = current_user.id
+    @reply.votes = 0
 
     respond_to do |format|
       if @reply.save
         format.html { redirect_to forum_path(@forum) }
-        format.js # renders create.js.erb
+        format.js  # renders create.js.erb
       else
         format.html { redirect_to forum_path(@forum), notice: "Reply did not save. Please try again."}
         format.js
@@ -48,6 +49,22 @@ class RepliesController < ApplicationController
   def show
   end
 
+   def dislike
+
+    @reply = Reply.find_by(id: params[:id])
+    @reply.update_attribute(:votes, @reply.votes+1)
+    redirect_to forum_path(@reply.forum_id)
+     
+  end
+  
+  def like
+    
+    @reply = Reply.find_by(id: params[:id])
+    @reply.update_attribute(:votes, @reply.votes+1)
+    redirect_to forum_path(@reply.forum_id)
+         
+  end
+
   private
 
   def set_forum
@@ -59,6 +76,6 @@ class RepliesController < ApplicationController
   end
 
   def reply_params
-    params.require(:reply).permit(:reply)
+    params.require(:reply).permit(:reply, :votes)
   end
 end
