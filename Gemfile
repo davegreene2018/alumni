@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 # added gems
+gem 'coffee-rails'
 gem 'bulma-rails'
 gem 'simple_form'
 gem 'devise'
@@ -37,7 +38,6 @@ gem 'friendly_id'
 gem 'redcarpet'
 gem 'coderay'
 
-gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -65,4 +65,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: []

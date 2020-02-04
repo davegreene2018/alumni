@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :profiles
   get 'static_pages/index'
   get 'static_pages/home'
   get 'static_pages/members'

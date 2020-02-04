@@ -1,12 +1,13 @@
 class RepliesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_reply, only: [:edit, :update, :show, :destroy, :like]
+  before_action :set_reply, only: [:edit, :update, :show, :destroy, :like, :dislikes]
   before_action :set_forum, only: [:create, :edit, :show, :update, :destroy]
 
   def create
-    @reply = @forum.replies.create(params[:reply].permit(:reply, :forum_id, :votes))
+    @reply = @forum.replies.create(params[:reply].permit(:reply, :forum_id, :likes, :dislikes))
     @reply.user_id = current_user.id
-    @reply.votes = 0
+    @reply.likes = 0
+    @reply.dislikes = 0
 
     respond_to do |format|
       if @reply.save
@@ -52,7 +53,7 @@ class RepliesController < ApplicationController
    def dislike
 
     @reply = Reply.find_by(id: params[:id])
-    @reply.update_attribute(:votes, @reply.votes+1)
+    @reply.update_attribute(:dislikes, @reply.dislikes+1)
     redirect_to forum_path(@reply.forum_id)
      
   end
@@ -60,8 +61,9 @@ class RepliesController < ApplicationController
   def like
     
     @reply = Reply.find_by(id: params[:id])
-    @reply.update_attribute(:votes, @reply.votes+1)
-    redirect_to forum_path(@reply.forum_id)
+    @reply.update_attribute(:likes, @reply.likes+1)
+     redirect_to forum_path(@reply.forum_id) 
+    
          
   end
 
@@ -76,6 +78,6 @@ class RepliesController < ApplicationController
   end
 
   def reply_params
-    params.require(:reply).permit(:reply, :votes)
+    params.require(:reply).permit(:reply, :likes, :dislikes)
   end
 end

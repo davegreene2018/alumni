@@ -77,6 +77,13 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     coderay (1.1.2)
+    coffee-rails (5.0.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 5.2.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.6)
     devise (4.7.1)
@@ -86,7 +93,8 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.9.0)
-    ffi (1.12.1)
+    execjs (2.7.0)
+    ffi (1.12.2)
     friendly_id (5.3.0)
       activerecord (>= 4.0.0)
     globalid (0.4.2)
@@ -167,7 +175,7 @@ GEM
       railties (>= 5.0)
     rolify (5.2.0)
     ruby_dep (1.5.0)
-    rubyzip (2.1.0)
+    rubyzip (2.2.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.2.1)
@@ -203,6 +211,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2019.3)
+      tzinfo (>= 1.0.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (4.0.1)
@@ -235,6 +245,7 @@ DEPENDENCIES
   cancancan
   capybara (>= 2.15)
   coderay
+  coffee-rails
   devise
   friendly_id
   gravatar_image_tag

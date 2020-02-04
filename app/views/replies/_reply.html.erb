@@ -18,7 +18,7 @@
         <div class="level-left">
           <a class="level-item">
            
-            <%= reply.votes %>
+            <%= reply.likes %>
             
           </a>
           <a class="level-item">
@@ -33,13 +33,13 @@
           </a>
            <a class="level-item">
            
-            <%= reply.votes %>
+            <%= reply.dislikes %>
             
           </a>
           <a class="level-item">
-           
+            <a href="/replies/dislike/<%= reply.id %>">
            <span class="icon is-small"><i class="fa fa-thumbs-down"></i></span>
-            
+            </a>
           </a>
           <a class="level-item">
             <%= link_to edit_forum_reply_path(reply.forum, reply) do %>

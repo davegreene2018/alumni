@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
@@ -85,7 +85,7 @@
             <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
             <div class="navbar-dropdown is-right">
                <%= link_to current_user.username, edit_user_registration_path, class:"navbar-item" %>
-              <%= link_to "Profile", profile_path, class:"navbar-item" %>
+              <%= link_to "Profile", profiles_path, class:"navbar-item" %>
                <%= link_to "Posts", '#', class:"navbar-item" %>
               <%= link_to "Edit", edit_user_registration_path, class:"navbar-item" %>
               <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>

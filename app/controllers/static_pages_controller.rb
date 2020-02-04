@@ -9,7 +9,5 @@ class StaticPagesController < ApplicationController
   	 @users = User.all
   end
 
-  def profile
-  	@users = User.all
-  end 
+ 
 end
