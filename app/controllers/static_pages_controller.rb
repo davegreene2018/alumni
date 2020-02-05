@@ -9,5 +9,7 @@ class StaticPagesController < ApplicationController
   	 @users = User.all
   end
 
+  
+
  
 end

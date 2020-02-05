@@ -10,7 +10,8 @@ class ProfilesController < ApplicationController
     @profiles = Profile.where('user_id = ?', current_user.id)
     @profile = Profile.new
 
-    @user = User.all.where('id = ?', current_user.id)  #.where('id = ?', current_user.id)
+    @user = User.all.where('id = ?', current_user.id) 
+    @recentforum = Forum.all.where('user_id = ?', current_user.id)  
     
     
   end

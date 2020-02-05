@@ -1,0 +1,16 @@
+
+<div class="search">
+	<div>
+	
+<%= form_tag("/search", :method => "post") do %>
+
+<div class="field has-addons">
+<%= text_field_tag(:q, "", :class => "input is-medium-2 ") %>
+
+<%= submit_tag("Search", :class => "button is-info") %>
+</div>
+<% end %>
+
+</div>
+</div>
+

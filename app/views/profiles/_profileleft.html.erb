@@ -6,18 +6,19 @@
   
   
   
-  <ul class="list"> 
-   
-    <li>
+  <h3 class="title is-5 has-text-black-light">Info</h3>
     	<p><strong>First name:</strong> <%= user.firstname %></p>
     	<p><strong>Last name:</strong> <%= user.lastname %></p>
     	<p><strong>College:</strong> <%= user.college %></p>
     	<p><strong>Joined:</strong> <%= time_ago_in_words(user.created_at) %> ago </p>
 
-    </li>
    
-  </ul>
-<% end %>
+  <% end %>
+<hr />
+  <h3 class="title is-5 has-text-black-light">Recent forum posts</h3>
+  <% @recentforum.each do |forum| %>
+    <p><strong><%= forum.title %></strong> <%= time_ago_in_words(forum.created_at) %> ago </p>
+    <% end %>
   <br/>
 
   

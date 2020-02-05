@@ -1,0 +1,20 @@
+<div class="columns">
+  <div class="column">
+    <% if @forums.length == 0  %>
+
+<h2>No products were found to match your search</h2>
+<% end %>
+
+      <% @forums.each do |forum| %>
+      
+       <h1><strong><%= forum.title %></strong></h1>
+       <p> <%= truncate(forum.content, length: 540) %></p>
+       <br />
+         <%= link_to 'View',  forum, :class => "button", :role => "button" %>
+         <hr>
+              
+  <% end %>
+<br />
+
+  </div>
+</div>

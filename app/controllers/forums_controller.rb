@@ -26,6 +26,12 @@ class ForumsController < ApplicationController
   def edit
   end
 
+  def search
+    
+     st = "%#{params[:q]}%"
+     @forums = Forum.where("title like ?", st).or(Forum.where("content like ?", st))
+  end
+
   # POST /discussions
   # POST /discussions.json
   def create

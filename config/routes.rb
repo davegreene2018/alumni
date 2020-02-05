@@ -18,7 +18,12 @@ end
   get '/profile' => 'static_pages#profile'
 
   get '/replies/like/:id' => 'replies#like'
-  get '/replies/dislike/:id' => 'replies#dislike'  
+  get '/replies/dislike/:id' => 'replies#dislike' 
+
+  #get '/search' => 'static_pages#search' 
+  post '/search' => 'forums#search'
+  
+  get '/search' => 'static_pages#searchforums'
 
 
   devise_for :users, controllers: {registrations: 'registrations'}
