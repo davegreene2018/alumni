@@ -19,7 +19,7 @@
 
         <%# if forum_author(forum) || has_role?(:admin) %>
 
-        <div class="column has-text-right">
+        <div class="column has-text-left">
           
           <%= link_to 'Edit', edit_profile_path(profile), class:'button' %>
           <%= link_to 'Delete', profile, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>

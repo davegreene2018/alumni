@@ -1,7 +1,7 @@
 <div class="columns">
   <div class="column is-8">
     <h1 class="title is-2 has-text-grey forum-title"><%= @forum.title %></h1>
-    <h3 class="subtitle is-5 has-text-grey-lighter">by <%= @forum.user.username %> in <%= link_to @forum.subject.subject, @forum.subject %></h3>
+    <h3 class="subtitle is-5 has-text-black-lighter">by <%= @forum.user.username %> in <%= link_to @forum.subject.subject, @forum.subject %></h3>
     <div class="level">
       <div class="level-left"></div>
       <div class="level-right">
@@ -13,7 +13,7 @@
         <%# end %>
       </div>
     </div>
-    <div class="content"><%= @forum.content %></div>
+    <div class="content"><%= markdown(@forum.content) %></div>
 
     <h2 class="subtitle is-5 has-text-grey"><%= @forum.replies.count %> Replies</h2>
 

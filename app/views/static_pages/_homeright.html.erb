@@ -1,0 +1,27 @@
+ <div class="column">
+  <h3 class="title is-5 has-text-black-light">Latest friends status updates</h3>
+  <div class="forums">
+    <% @profiles.each do |profile| %>
+      <div class="columns bb-not-last pv10">
+        <div class="column is-1">
+          <%= gravatar_image_tag(profile.user.email, class:'border-radius-50', size: 48, alt: profile.user.username) %>
+        </div>
+        <div class="column ">
+         
+          <div class="content">
+            <%= truncate(profile.status, length: 140) %>
+            <p><em><small>Posted <%= time_ago_in_words(profile.created_at) %> ago in
+              
+              by <%= profile.user.username %>
+              </small>
+              </em>
+            </p>
+          </div>
+        </div>
+
+   
+
+      </div>
+    <% end %>
+  </div>
+</div>

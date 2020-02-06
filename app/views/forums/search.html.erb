@@ -1,12 +1,15 @@
-<div class="columns">
-  <div class="column">
+<div class="columns is-mobile is-centered">
+  <div class="column is-three-quarters">
     <% if @forums.length == 0  %>
 
-<h2>No products were found to match your search</h2>
+<h2>No results were found to match your search</h2>
 <% end %>
-
+</div>
+</div>
+<div class="columns is-mobile is-centered ">
+  <div class="column is-three-quarters ">
       <% @forums.each do |forum| %>
-      
+     
        <h1><strong><%= forum.title %></strong></h1>
        <p> <%= truncate(forum.content, length: 540) %></p>
        <br />

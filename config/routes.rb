@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :colleges
   resources :profiles
   get 'static_pages/index'
   get 'static_pages/home'
@@ -12,7 +13,7 @@ end
 
  
 
-  root 'forums#index'
+  root 'static_pages#home'
   get '/members' => 'static_pages#members'
   get '/home' => 'static_pages#home'
   get '/profile' => 'static_pages#profile'

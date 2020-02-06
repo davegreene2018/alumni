@@ -1,16 +1,9 @@
 <section class="section">
   <div class="container">
-    <div class="columns is-centered">
+    <div class="columns is-left">
       <div class="column is-4">
 
-      <h2 class="title is-2">Edit <%= resource_name.to_s.humanize %></h2>
-
-      <%# if has_role?(:admin) %>
-        <div class="notification">
-          <p>You are currently an <strong>admin</strong> of the Discussions application.</p>
-        </div>
-        <br />
-      <%# end %>
+      <!-- <h2 class="title is-2">Edit <%= resource_name.to_s.humanize %></h2> -->
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
