@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
   database: alumni_production
   username: alumni
   password: <%= ENV['ALUMNI_DATABASE_PASSWORD'] %>
