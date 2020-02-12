@@ -72,9 +72,9 @@ test:
 
 
 
-production:
+#production:
  # <<: *default
-  adapter: postgresql
-  database: alumni_production
-  username: dave   #alumni
-  password: #<%= ENV['ALUMNI_DATABASE_PASSWORD'] %>
+  #adapter: postgresql
+  #database: alumni_production
+  #username: dave   #alumni
+  #password: <%= ENV['ALUMNI_DATABASE_PASSWORD'] %>
