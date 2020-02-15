@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :forums, dependent: :destroy
   has_many :subjects, through: :forums
   has_many :channels, through: :subjects
-  belongs_to :profile
+  #belongs_to :profile
 end
