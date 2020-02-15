@@ -3,12 +3,25 @@
   <head>
     <title>Alumni Ireland</title>
     <%= csrf_meta_tags %>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<script>$(document).ready(function() {
+
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+
+  });
+});
+
+</script>
 
   </head>
 
@@ -32,14 +45,14 @@
         <%= link_to root_path, class:"navbar-item" do %>
           <h1 class="title is-5">Alumni Ireland</h1>
         <% end  %>
-      <div class="navbar-burger burger" data-target="navbar">
+      <div class="navbar-burger burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </div>
 
-      <div id="navbar" class="navbar-menu">
+      <div class="navbar-menu" id="navMenu">
         <div class="navbar-end">
 
          <div class="navbar-item">
