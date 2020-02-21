@@ -26,7 +26,7 @@
   </head>
 
   <body>
-     <section class="hero is-smallx2 is-primary"> <div class="hero-body"> <div class="container has-text-centered"> <h1 class="title has-text-white">Welcome to Alumni Ireland</h1>
+     <section class="hero is-smallx2 is-black"> <div class="hero-body"> <div class="container has-text-centered"> <h1 class="title has-text-white">Welcome to Alumni Ireland</h1>
      <%=render 'layouts/search'%></div> </div> </section>
 
 
@@ -78,14 +78,14 @@
               <%= link_to 'Colleges', colleges_path, class:"navbar-item" %>
             </div>
           </div>
-
+             -->
           <div class="navbar-item">
             <div class="field is-grouped">
               <%= link_to 'Channels', channels_path, class:"navbar-item" %>
             </div>
           </div>
 
-          -->
+          
           <div class="navbar-item">
             <div class="field is-grouped">
               <%= link_to 'Subjects', subjects_path, class:"navbar-item" %>
@@ -96,16 +96,13 @@
 
 
           <% if user_signed_in? %>
-          <div class="navbar-item">
-            <div class="field is-grouped">
-              <%= link_to 'New Status', profiles_path, class:"button is-info" %>
-            </div>
-          </div>
+          <!--
           <div class="navbar-item">
             <div class="field is-grouped">
               <%= link_to 'New Post', new_forum_path, class:"button is-info" %>
             </div>
           </div>
+        -->
           <div class="navbar-item has-dropdown is-hoverable">
             <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
             <div class="navbar-dropdown is-right">
@@ -144,6 +141,8 @@
     <%= yield %>
   </div>
 </section>
-
+<div class="footer is-small has-background-black">
+  <p>Footer</p>
+</div>
   </body>
 </html>

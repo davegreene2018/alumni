@@ -32,7 +32,7 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       if @channel.save
-        format.html { redirect_to channel_path, notice: 'Channel was successfully created.' }
+        format.html { redirect_to channels_path, notice: 'Channel was successfully created.' }
         format.json { render :show, status: :created, location: @channel }
       else
         format.html { render :new }

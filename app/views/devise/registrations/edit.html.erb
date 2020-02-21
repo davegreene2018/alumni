@@ -7,14 +7,14 @@
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
-
-
+  
+          
           <div class="field">
             <div class="control">
               <%= f.input :username, required: true,  input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
             </div>
           </div>
-
+         
           <div class="field">
             <div class="control">
               <%= f.input :firstname, required: true,  input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
@@ -34,10 +34,16 @@
 
           <div class="field">
             <div class="control">
+              <%= f.input :about, required: true,  input_html: { class: "textarea"}, wrapper: false, label_html: { class: "label" } %>
+            </div>
+          </div>
+       <!--
+          <div class="field">
+            <div class="control">
               <%= f.input :email, required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
             </div>
           </div>
-
+          -->
           <div class="field">
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>

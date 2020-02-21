@@ -18,7 +18,7 @@
     <h2 class="subtitle is-5 has-text-grey"><%= @forum.replies.count %> Replies</h2>
 
     <div id="forum-replies">
-      <%= render @forum.replies %>
+      <%= render @forum.replies.order(likes: :desc) %>
     </div>
 
     <hr />

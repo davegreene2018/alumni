@@ -9,9 +9,10 @@ class ProfilesController < ApplicationController
     @profiles = Profile.all
     @profiles = Profile.where('user_id = ?', current_user.id)
     @profile = Profile.new
+    @profiles = Profile.order('created_at DESC')
 
     @user = User.all.where('id = ?', current_user.id) 
-    @recentforum = Forum.all.where('user_id = ?', current_user.id)  
+    @recentforum = Forum.all.where('user_id = ?', current_user.id).order('created_at DESC')  
     
     
   end
@@ -70,6 +71,23 @@ class ProfilesController < ApplicationController
       format.html { redirect_to profiles_url, notice: 'Profile was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def dislike
+
+    @profile = Profile.find_by(id: params[:id])
+    @profile.update_attribute(:dislikes, @profile.dislikes+1)
+    redirect_to profile_path(@profile.id)
+     
+  end
+  
+  def like
+    
+    @profile = Profile.find_by(id: params[:id])
+    @profile.update_attribute(:likes, @profile.likes+1)
+     redirect_to profile_path(@profile.id) 
+    
+         
   end
 
   private

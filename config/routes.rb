@@ -20,6 +20,8 @@ end
 
   get '/replies/like/:id' => 'replies#like'
   get '/replies/dislike/:id' => 'replies#dislike' 
+  get '/profiles/like/:id' => 'profiles#like'
+  get '/profiles/dislike/:id' => 'profiles#dislike' 
 
   #get '/search' => 'static_pages#search' 
   post '/search' => 'forums#search'
