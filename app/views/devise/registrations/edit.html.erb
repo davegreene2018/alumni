@@ -26,11 +26,28 @@
             </div>
           </div>
 
-          <div class="field">
+           <div class="field">
             <div class="control">
-              <%= f.input :college, required: true,  input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              <div><strong>* College</strong></div>
+               <span class="select">
+                  
+              <%= f.select(:college, options_for_select([['Select college','Select college'],['Dublin City University', 'Dublin City University'], ['National University of Ireland, Galway', 'National University of Ireland, Galway'],['Maynooth selectrsity','Maynooth University'],['Trinity College Dublin','Trinity College Dublin'],['The University of Limerick','The University of Limerick'],['University College Dublin','University College Dublin'],['University College Cork','University College Cork'],['Technological University Dublin','Technological University Dublin'],['Athlone Institute of Technology','Athlone Institute of Technology'],['Blanchardstown Institute of Technology','Blanchardstown Institute of Technology'],['Institute of Technology, Carlow','Institute of Technology, Carlow'],['Cork Institute of Technology','Cork Institute of Technology'],['Dublin Institute of Technology','Dublin Institute of Technology'],['Dundalk Institute of Technology','Dundalk Institute of Technology'],['Dun Laoghaire Institute of Art, Design and Technology','Dun Laoghaire Institute of Art, Design and Technology'],['Galway-Mayo Institute of Technology','Galway-Mayo Institute of Technology'],['Letterkenny Institute of Technology','Letterkenny Institute of Technology'],['Limerick Institute of Technology','Limerick Institute of Technology'],['Institute of Technology, Sligo','Institute of Technology, Sligo'],['Tallaght Institute of Technology','Tallaght Institute of Technology'],['Institute of Technology, Tralee','Institute of Technology, Tralee'],['Waterford Institute of Technology','Waterford Institute of Technology'],['St Patrick’s, Carlow College','St Patrick’s, Carlow College'],['Marino Institute of Education, Dublin','Marino Institute of Education, Dublin'],['Mary Immaculate College, Limerick','Mary Immaculate College, Limerick'],['National College of Art and Design','National College of Art and Design'],['National College of Ireland','National College of Ireland'],['Pontifical University of Maynooth','Pontifical University of Maynooth'],['Royal Irish Academy of Music','Royal Irish Academy of Music'],['Royal College of Surgeons Ireland','Royal College of Surgeons Ireland'],['St. Angela’s College, Sligo','St. Angela’s College, Sligo']]))  %>
+              
+                   
+            </span>
             </div>
           </div>
+    
+
+         <div class="field">
+            <div class="control">
+              <div><strong>* Studying</strong></div>
+               <span class="select">
+              <%= f.select(:studying, options_for_select([['Select studying','Select field of study'],['Agriculture, Forestry, Fisheries and Veterinary', 'Agriculture, Forestry, Fisheries and Veterinary'], ['Arts and Humanities', 'Arts and Humanities'],['Business, Administration and Law', 'Business, Administration and Law'], ['Business/Management Skills', 'Business/Management Skills'],['Engineering, manufacturing and construction', 'Engineering, manufacturing and construction'], ['Food & Beverage', 'Food & Beverage'],['Health and Welfare', 'Health and Welfare'], ['Information and Communication Technologies', 'Information and Communication Technologies'], ['Natural Sciences, Mathematics and Statistics', 'Natural Sciences, Mathematics and Statistics']]))  %>
+            </span>
+            </div>
+          </div>
+
 
           <div class="field">
             <div class="control">

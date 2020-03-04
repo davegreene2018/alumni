@@ -8,4 +8,7 @@ class User < ApplicationRecord
   has_many :subjects, through: :forums
   has_many :channels, through: :subjects
   #belongs_to :profile
+  has_many :friendships
+  #has_many :users #
+  has_many :friends, :through => :friendships
 end

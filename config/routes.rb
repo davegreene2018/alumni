@@ -1,22 +1,28 @@
 Rails.application.routes.draw do
   
   resources :colleges
+  resources :members
   resources :profiles
   get 'static_pages/index'
   get 'static_pages/home'
   get 'static_pages/members'
   resources :channels 
   resources :subjects 
+  resources :friendships
+  resources :friends 
   resources :forums do 
-  resources :replies 
+  resources :replies
+
 end 
 
  
 
   root 'static_pages#home'
   get '/members' => 'static_pages#members'
+  get '/friends' => 'friends#myFriends'
   get '/home' => 'static_pages#home'
-  get '/profile' => 'static_pages#profile'
+  #get '/profile' => 'static_pages#profile'
+  get '/profiles/:user_id' => 'profiles#index'
 
   get '/replies/like/:id' => 'replies#like'
   get '/replies/dislike/:id' => 'replies#dislike' 

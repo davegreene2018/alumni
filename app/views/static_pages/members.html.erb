@@ -1,20 +1,4 @@
-
-
-
-
-    <div class="columns">
-    	<% @users.each do |user| %>
-  <div class="column is-2">
-    <%= gravatar_image_tag(user.email, class:'border-radius-50', size: 48, alt: user.username) %>
-        <br/>
-    <%= user.firstname %> <%= user.lastname %>
-    <br/>
-    <%= user.college %>
-    <br/>
-    <%= user.email %>
-  </div>
-         
-    		
-    <hr>
-   
-<% end %>
+<div class="columns">
+  <%= render 'shared/members' %>
+  
+</div>

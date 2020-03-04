@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<div class="columns">
+  <div class="column is-one-quarter">
+    <%= render 'userleft' %>
+  </div>
+  <div class="column is-two-quarter">
+     <% if @user.username == current_user.username %>
+    <%= render 'profiles/form', profile: @profile %>
+    <% end %>
+    <br />
+<%= render 'shared/profiles' %>
+  </div>
+  <div class="column is-one-quarter">
+   
+  </div>
+ 
+</div>
+ 
+
+
+<br>
+

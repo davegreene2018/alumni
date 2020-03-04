@@ -1,0 +1,12 @@
+
+
+<h2>Friends</h2>
+<ul>
+  <% @user.friendships.each do |friendship| %>
+    <li>
+      <%=h friendship.friend.username %>
+      <%= link_to "remove", friendship, :method => :delete %>
+    </li>
+  <% end %>
+</ul>
+

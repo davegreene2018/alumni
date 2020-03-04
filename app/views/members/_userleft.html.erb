@@ -1,0 +1,33 @@
+<h3 class="title is-5 has-text-black-light"><%= @user.username %></h3>
+   <%= gravatar_image_tag(@user.email, class:'border-radius-50', size: 48, alt: @user.username) %>
+   <hr />
+  
+  
+    
+ 
+      <% if @user.username != current_user.username %>
+        
+        <%= link_to "Add Friend", friendships_path(:friend_id => @user), :method => :post %>
+      <% end %>
+     
+    <% if @user.username == current_user.username %>
+  
+<%= link_to "My Friends", { :controller => "friends", :action => "show", :id => current_user } %>
+  <% end %>
+  <h3 class="title is-5 has-text-black-light">Info</h3>
+    	<p><strong>First name:</strong> <%= @user.firstname %></p>
+    	<p><strong>Last name:</strong> <%= @user.lastname %></p>
+    	<p><strong>College:</strong> <%= @user.college %></p>
+      <p><strong>Studying:</strong> <%= @user.studying %></p>
+    	<p><strong>Joined:</strong> <%= time_ago_in_words(@user.created_at) %> ago </p>
+     
+   
+ 
+<hr />
+  <h3 class="title is-5 has-text-black-light">My recent posts</h3>
+  <% @recentforum.each do |forum| %>
+   <%= link_to forum do %>
+    <p><strong><%= forum.title %></strong> <%= time_ago_in_words(forum.created_at) %> ago </p>
+    <% end %>
+    <% end %>
+  <br/>

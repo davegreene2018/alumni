@@ -7,10 +7,10 @@ class ProfilesController < ApplicationController
   def index
     
     @profiles = Profile.all
+
     @profiles = Profile.where('user_id = ?', current_user.id)
     @profile = Profile.new
     @profiles = Profile.order('created_at DESC')
-
     @user = User.all.where('id = ?', current_user.id) 
     @recentforum = Forum.all.where('user_id = ?', current_user.id).order('created_at DESC')  
     
@@ -20,7 +20,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-
+   #@user = current_user
+   @user = User.find(params[:id])
   end
 
   # GET /profiles/new
@@ -100,7 +101,7 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:status, :about)
+      params.require(:profile).permit(:status, :about, :user_id)
     end
 
     
