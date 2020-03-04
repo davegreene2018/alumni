@@ -10,8 +10,8 @@ class StaticPagesController < ApplicationController
   	 @forums = Forum.all.order('created_at desc').limit(4)
   	 @profiles = Profile.all.order('created_at desc').limit(5)
      subjectId = "1"
-     @events = Forum.where(subject_id: '3').limit(1)
-     @collegeLife = Forum.where(subject_id: '1').limit(1)
+     @events = Forum.where(subject_id: '12').limit(1)
+     @collegeLife = Forum.where(subject_id: '11').limit(1)
   end
 
   def members
