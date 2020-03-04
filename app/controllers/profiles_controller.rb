@@ -1,19 +1,29 @@
 class ProfilesController < ApplicationController
+  STATUS_PER_PAGE = 5
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  
   
 
   # GET /profiles
   # GET /profiles.json
   def index
     
-    @profiles = Profile.all
 
+
+    @profiles = Profile.all
     @profiles = Profile.where('user_id = ?', current_user.id)
+
+    @totalstatus = Profile.where('user_id = ?', current_user.id).count
+    @limitPages = @totalstatus / STATUS_PER_PAGE
+    @page = params.fetch(:page,0).to_i
+    
+
     @profile = Profile.new
     @profiles = Profile.order('created_at DESC')
     @user = User.all.where('id = ?', current_user.id) 
     @recentforum = Forum.all.where('user_id = ?', current_user.id).order('created_at DESC')  
     
+    @profiles = Profile.offset(@page * STATUS_PER_PAGE).limit(STATUS_PER_PAGE)
     
   end
 
@@ -38,6 +48,9 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
+
+    
+    #@profile.isowner = @user.id 
 
     respond_to do |format|
       if @profile.save
@@ -97,11 +110,15 @@ class ProfilesController < ApplicationController
       @profile = Profile.find(params[:id])
     end
 
+    def set_member
+      @member = User.find(params[:id])
+    end
+
 
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:status, :about, :user_id)
+      params.require(:profile).permit(:status, :about, :user_id, :isowner)
     end
 
     
