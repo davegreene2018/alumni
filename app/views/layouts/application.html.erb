@@ -77,27 +77,16 @@
             </div>
           </div>
 
-         <!-- <div class="navbar-item">
-            <div class="field is-grouped">
-              <%= link_to 'Colleges', colleges_path, class:"navbar-item" %>
-            </div>
-          </div>
-             
-          <div class="navbar-item">
-            <div class="field is-grouped">
-              <%= link_to 'Channels', channels_path, class:"navbar-item" %>
-            </div>
-          </div>
 
+        <% if has_role?(:admin) %> 
           
           <div class="navbar-item">
             <div class="field is-grouped">
-              <%= link_to 'Subjects', subjects_path, class:"navbar-item" %>
+              <%= link_to 'New Subject', new_subject_path, class:"button is-info" %>
             </div>
           </div>
         
-         -->
-
+        <% end %>
 
           <% if user_signed_in? %>
           
@@ -110,6 +99,7 @@
           <div class="navbar-item has-dropdown is-hoverable">
             <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
             <div class="navbar-dropdown is-right">
+
                <%= link_to current_user.username, profiles_path, class:"navbar-item" %>
               <%= link_to "Edit profile", edit_user_registration_path, class:"navbar-item" %>
                <%= link_to "My posts", '#', class:"navbar-item" %>
@@ -143,7 +133,10 @@
   </div>
 </section>
 <div class="footer is-small has-background-black">
-  <p>Footer</p>
+  <a href="#"<i class="fa fa-facebook fa-5x"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+  <a href="#"<i class="fa fa-instagram fa-5x"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+  <a href="#"<i class="fa fa-twitter fa-5x"></i></a>
+  
 </div>
   </body>
 </html>

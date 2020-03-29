@@ -4,6 +4,7 @@ class ForumsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   FORUMS_PER_PAGE = 5
+  #SEARCH_PER_PAGE = 5
 
   # GET /forums
   # GET /forums.json
@@ -11,11 +12,15 @@ class ForumsController < ApplicationController
     @forums = Forum.all.order('created_at desc')
     @subjects = Subject.all.order('created_at desc')
 
+    # pagination for all posts
     @totalforums = Forum.count
     @limitPages = @totalforums / FORUMS_PER_PAGE
     @page = params.fetch(:page,0).to_i
     @forums = Forum.offset(@page * FORUMS_PER_PAGE).limit(FORUMS_PER_PAGE)
     @forumscount = Forum.all
+
+   
+   
   end
 
   # GET /forums/1
@@ -39,6 +44,14 @@ class ForumsController < ApplicationController
     
      st = "%#{params[:q]}%"
      @forums = Forum.where("title like ?", st).or(Forum.where("content like ?", st))
+    
+
+    # pagination for search
+    @totalsearch = @forums.count
+    #@limitPages = @totalsearch / SEARCH_PER_PAGE
+    #@page = params.fetch(:page,0).to_i
+    #@forums = Forum.where("title like ?", st).or(Forum.where("content like ?", st)).offset(@page * SEARCH_PER_PAGE).limit(SEARCH_PER_PAGE)
+    @forumscount = @totalsearch
   end
 
   # POST /forums

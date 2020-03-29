@@ -3,9 +3,9 @@
   <h1 class="title is-2"><%= @subject.subject %></h1>
   </div>
   <div class="level-right">
-  <%# if has_role?(:admin) %>
+  <% if has_role?(:admin) %>
     <%= link_to 'Edit Subject', edit_subject_path(@subject), class:"button" %>
-  <%# end %>
+  <% end %>
   </div>
 </div>
 <hr />

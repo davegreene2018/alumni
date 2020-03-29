@@ -16,18 +16,14 @@ class MembersController < ApplicationController
  def show
    @user = User.find(params[:id])
    @recentforum = Forum.all.where('user_id = ?', @user.id).order('created_at DESC')
+   @profiles = Profile.all.where('user_id = ?', @user.id).order('created_at DESC')
+   @profile = Profile.new
 
-   @totalstatus = Profile.where('user_id = ?', current_user.id).count
-    @limitPages = @totalstatus / STATUS_PER_PAGE
-    @page = params.fetch(:page,0).to_i
-
-    @profiles = Profile.all
-    @profiles = Profile.all.where('user_id = ?', @user.id).order('created_at DESC')
-    @profile = Profile.new
-
-    @profiles = Profile.offset(@page * STATUS_PER_PAGE).limit(STATUS_PER_PAGE)
-
-    
+   #pagination
+   @totalstatus = Profile.count
+   @limitPages = @totalstatus / STATUS_PER_PAGE
+   @page = params.fetch(:page,0).to_i
+   @profiles = Profile.all.where('user_id = ?', @user.id).offset(@page * STATUS_PER_PAGE).limit(STATUS_PER_PAGE)
    
  end 
 
