@@ -1,6 +1,6 @@
 
    <% @user.each do |user| %>
-   <h3 class="title is-5 has-text-black-light"><%= user.username %></h3>
+   <h3 class="title is-5 has-text-black-light"><%= user.username %> <%= user.id %></h3>
    <%= gravatar_image_tag(user.email, class:'border-radius-50', size: 48, alt: user.username) %>
    <hr />
   
