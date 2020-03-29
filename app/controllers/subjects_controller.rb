@@ -3,6 +3,8 @@ class SubjectsController < ApplicationController
    before_action :find_channels, only: [:index, :show, :new, :edit]
   before_action :authenticate_user!, except: [:index, :show]
 
+   FORUMS_PER_PAGE = 5
+
   # GET /subjects
   # GET /subjects.json
   def index
@@ -14,7 +16,14 @@ class SubjectsController < ApplicationController
   # GET /subjects/1.json
   def show
     @forums = Forum.where('subject_id = ?', @subject.id)
-     @subjects = Subject.all
+    @subjects = Subject.all
+    
+    @totalforums = @forums.count
+    @limitPages = @totalforums / FORUMS_PER_PAGE
+    @page = params.fetch(:page,0).to_i
+    @forums = @forums.offset(@page * FORUMS_PER_PAGE).limit(FORUMS_PER_PAGE)
+    @forumscount = @forums.all
+    
   end
 
   # GET /subjects/new

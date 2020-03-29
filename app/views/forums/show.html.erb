@@ -5,12 +5,12 @@
     <div class="level">
       <div class="level-left"></div>
       <div class="level-right">
-        <%# if forum_author(@forum) %>
+        <% if forum_author(@forum) %>
         <div class="buttons">
             <%= link_to 'Edit Forum', edit_forum_path(@forum), class:'button'%>
             <%= link_to 'Delete', forum_path(@forum), method: :delete, data: { confirm: "Delete forum?" }, class:'button' %>
         </div>
-        <%# end %>
+        <% end %>
       </div>
     </div>
     <div class="content"><%= markdown(@forum.content) %></div>

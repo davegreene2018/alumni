@@ -1,5 +1,5 @@
 <div class="column is-8">
-  <h3 class="title is-5 has-text-grey-light">Latest forum posts</h3>
+  <h3 class="title is-5 has-text-grey-light"><%= @forumscount.count %> forum posts</h3>
   <div class="forums">
     <% @forums.each do |forum| %>
       <div class="columns bb-not-last pv10">
@@ -23,14 +23,23 @@
           </div>
         </div>
 
-        <%# if forum_author(forum) || has_role?(:admin) %>
+        <% if forum_author(forum)  %> <!-- || has_role?(:admin) -->
         <div class="column has-text-right">
           <%= link_to 'Edit', edit_forum_path(forum), class:'button' %>
           <%= link_to 'Delete', forum, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
         </div>
-        <%# end %>
+        <% end %>
 
       </div>
     <% end %>
+
+     <% if @page < @limitPages%>
+      <%= link_to "Next Page", forums_path(page: @page + 1) %> 
+        <% end %>
+        |
+      <% if @page > 0%>
+      <%= link_to "Last Page", forums_path(page: @page - 1) %>
+      <% end %>
+
   </div>
 </div>

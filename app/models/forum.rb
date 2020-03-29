@@ -5,5 +5,6 @@ class Forum < ApplicationRecord
   has_many :replies, dependent: :destroy # if forum is destroyed so are the replies
 
   validates :title, :content, presence: true # validates that their is content to reply
+  resourcify
 
 end

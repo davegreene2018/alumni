@@ -64,12 +64,13 @@
             </div>
           </div>
 
+          <% if user_signed_in? %>
           <div class="navbar-item">
             <div class="field is-grouped">
               <%= link_to 'Members', members_path, class:"navbar-item" %>
             </div>
           </div>
-
+          <% end %>
           <div class="navbar-item">
             <div class="field is-grouped">
               <%= link_to 'Forums', forums_path, class:"navbar-item" %>
@@ -81,7 +82,7 @@
               <%= link_to 'Colleges', colleges_path, class:"navbar-item" %>
             </div>
           </div>
-             -->
+             
           <div class="navbar-item">
             <div class="field is-grouped">
               <%= link_to 'Channels', channels_path, class:"navbar-item" %>
@@ -95,17 +96,17 @@
             </div>
           </div>
         
-         
+         -->
 
 
           <% if user_signed_in? %>
-          <!--
+          
           <div class="navbar-item">
             <div class="field is-grouped">
               <%= link_to 'New Post', new_forum_path, class:"button is-info" %>
             </div>
           </div>
-        -->
+        
           <div class="navbar-item has-dropdown is-hoverable">
             <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
             <div class="navbar-dropdown is-right">
@@ -121,9 +122,6 @@
           <div class="field is-grouped">
 
            
-            <p class="control">
-              <%= link_to "Members", '#', class: "button is-light"%>
-            </p>
             <p class="control">
               <%= link_to "Sign In", new_user_session_path, class: "button is-light"%>
             </p>

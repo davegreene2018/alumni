@@ -13,7 +13,7 @@
           <%= markdown(reply.reply)%>
         </p>
       </div>
-      <%# if reply_author(reply) || has_role?(:admin) %>
+      
       <nav class="level is-mobile">
         <div class="level-left">
           <a class="level-item">
@@ -41,10 +41,11 @@
            <span class="icon is-small"><i class="fa fa-thumbs-down"></i></span>
             </a>
           </a>
+          <% if reply_author(reply) %>
           <a class="level-item">
             <%= link_to edit_forum_reply_path(reply.forum, reply) do %>
             <span class="icon is-small"><i class="fa fa-pencil"></i></span>
-            <%# end %>
+            <% end %>
           </a>
           <a class="level-item">
             <%= link_to [reply.forum, reply],

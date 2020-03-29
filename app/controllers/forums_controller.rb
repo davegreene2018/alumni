@@ -3,26 +3,35 @@ class ForumsController < ApplicationController
   before_action :find_subjects, only: [:index, :show, :new, :edit]
   before_action :authenticate_user!, except: [:index, :show]
 
-  # GET /discussions
-  # GET /discussions.json
+  FORUMS_PER_PAGE = 5
+
+  # GET /forums
+  # GET /forums.json
   def index
     @forums = Forum.all.order('created_at desc')
     @subjects = Subject.all.order('created_at desc')
+
+    @totalforums = Forum.count
+    @limitPages = @totalforums / FORUMS_PER_PAGE
+    @page = params.fetch(:page,0).to_i
+    @forums = Forum.offset(@page * FORUMS_PER_PAGE).limit(FORUMS_PER_PAGE)
+    @forumscount = Forum.all
   end
 
-  # GET /discussions/1
-  # GET /discussions/1.json
+  # GET /forums/1
+  # GET /forums/1.json
   def show
      @forums = Forum.all.order('created_at desc')
     @subjects = Subject.all.order('created_at desc')
+   
   end
 
-  # GET /discussions/new
+  # GET /forums/new
   def new
     @forum = current_user.forums.build
   end
 
-  # GET /discussions/1/edit
+  # GET /forums/1/edit
   def edit
   end
 
@@ -32,8 +41,8 @@ class ForumsController < ApplicationController
      @forums = Forum.where("title like ?", st).or(Forum.where("content like ?", st))
   end
 
-  # POST /discussions
-  # POST /discussions.json
+  # POST /forums
+  # POST /forums.json
   def create
     @forum = current_user.forums.build(forum_params)
 
@@ -48,8 +57,8 @@ class ForumsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /discussions/1
-  # PATCH/PUT /discussions/1.json
+  # PATCH/PUT /forums/1
+  # PATCH/PUT /forums/1.json
   def update
     respond_to do |format|
       if @forum.update(forum_params)
@@ -62,8 +71,8 @@ class ForumsController < ApplicationController
     end
   end
 
-  # DELETE /discussions/1
-  # DELETE /discussions/1.json
+  # DELETE /forums/1
+  # DELETE /forums/1.json
   def destroy
     @forum.destroy
     respond_to do |format|
