@@ -41,7 +41,7 @@
            <span class="icon is-small"><i class="fa fa-thumbs-down"></i></span>
             </a>
           </a>
-          <% if reply_author(reply) %>
+          <% if reply_author(reply) || has_role?(:admin) %>
           <a class="level-item">
             <%= link_to edit_forum_reply_path(reply.forum, reply) do %>
             <span class="icon is-small"><i class="fa fa-pencil"></i></span>
