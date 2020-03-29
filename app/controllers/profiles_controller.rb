@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   STATUS_PER_PAGE = 5
   
@@ -8,17 +9,17 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     
-
+   
    @user = User.all.where('id = ?',current_user.id)
    @recentforum = Forum.all.where('user_id = ?', current_user.id).order('created_at DESC')
-   @profiles = Profile.all.where('user_id = ?', current_user.id).order('created_at DESC')
+   #@profiles = Profile.all.where('user_id = ?', current_user.id).order('created_at DESC')
    @profile = Profile.new
 
    #pagination
    @totalstatus = Profile.count
    @limitPages = @totalstatus / STATUS_PER_PAGE
    @page = params.fetch(:page,0).to_i
-   @profiles = Profile.offset(@page * STATUS_PER_PAGE).limit(STATUS_PER_PAGE)
+   @profiles = Profile.all.where('user_id = ?', current_user.id).order('created_at DESC').offset(@page * STATUS_PER_PAGE).limit(STATUS_PER_PAGE)
      
     
   end

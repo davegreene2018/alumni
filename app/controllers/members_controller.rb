@@ -15,6 +15,7 @@ class MembersController < ApplicationController
 
  def show
    @user = User.find(params[:id])
+   @users = User.all
    @recentforum = Forum.all.where('user_id = ?', @user.id).order('created_at DESC')
    @profiles = Profile.all.where('user_id = ?', @user.id).order('created_at DESC')
    @profile = Profile.new

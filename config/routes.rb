@@ -19,6 +19,8 @@ end
 
   root 'static_pages#home'
   get '/members' => 'static_pages#members'
+  get '/myposts' => 'static_pages#myposts'
+
   get '/friends' => 'friends#myFriends'
   get '/home' => 'static_pages#home'
   #get '/profile' => 'static_pages#profile'
@@ -35,5 +37,5 @@ end
   get '/search' => 'static_pages#searchforums'
 
 
-  devise_for :users, controllers: {registrations: 'registrations'}
+  devise_for :users, controllers: {registrations: 'registrations', confirmations: 'confirmations'}
 end
