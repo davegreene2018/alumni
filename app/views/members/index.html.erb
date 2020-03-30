@@ -7,21 +7,25 @@
           <a href="/members/<%= user.id %>">
           <%= gravatar_image_tag(user.email, class:'border-radius-50', size: 48, alt: user.username) %>
         </a>
+      </br></br>
+          <% if user.username != current_user.username %>
+        
+        <%= link_to "Follow", friendships_path(:friend_id => user),class:"button is-info", :method => :post %>
+      <% end %>
         </div>
+
         <div class="column is-10">
           
-            <h3><strong><%= user.username%></strong> Joined: <%= time_ago_in_words(user.created_at) %> Id: <%= user.id %>
+            <h3><strong><%= user.username%></strong> Joined: <%= time_ago_in_words(user.created_at) %>
             
-      <% if user.username != current_user.username %>
-        
-        <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
-      <% end %></h3>
+     </h3>
             <h5><strong>College:</strong> <%= user.college%> <strong>Studying:</strong> <%= user.studying%></h5>
           <br/>
           <div class="content">
             <%= truncate (user.about), length: 200 %>
            
           </div>
+
         </div>
 
         

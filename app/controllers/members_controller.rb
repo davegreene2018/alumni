@@ -20,6 +20,8 @@ class MembersController < ApplicationController
    @profiles = Profile.all.where('user_id = ?', @user.id).order('created_at DESC')
    @profile = Profile.new
 
+   @friendship = Friendship.all.where('friend_id = ?', @user.id)
+
    #pagination
    @totalstatus = Profile.count
    @limitPages = @totalstatus / STATUS_PER_PAGE

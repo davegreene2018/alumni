@@ -21,18 +21,21 @@
               </em>
             </p>
           </div>
+          <h2 class="subtitle is-5 has-text-grey"><%= forum.replies.count %> Replies</h2>
         </div>
-
+       
         <% if forum_author(forum) || has_role?(:admin) %> 
         <div class="column has-text-right">
           <%= link_to 'Edit', edit_forum_path(forum), class:'button' %>
           <%= link_to 'Delete', forum, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
+
         </div>
         <% end %>
 
+      
       </div>
     <% end %>
-
+   
      <% if @page < @limitPages%>
       <%= link_to "Next Page", forums_path(page: @page + 1) %> 
         <% end %>
