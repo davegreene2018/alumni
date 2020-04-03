@@ -18,6 +18,7 @@ class StaticPagesController < ApplicationController
 
   def browseforums
      @subjects = Subject.all
+     @totalforums = Forum.count
   end
 
   def members
