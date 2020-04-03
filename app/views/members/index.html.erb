@@ -33,13 +33,16 @@
       </div>
     <% end %>
     <div>
-      <% if @page < @limitPages%>
-      <%= link_to "Next Page", members_path(page: @page + 1) %> 
-        <% end %>
-        |
+
       <% if @page > 0%>
-      <%= link_to "Last Page", members_path(page: @page - 1) %>
+      <%= link_to "Last Page", members_path(page: @page - 1), class:"pagination-previous" %>
       <% end %>
+
+      <% if @page < @limitPages%>
+      <%= link_to "Next Page", members_path(page: @page + 1), class:"pagination-next" %> 
+      <% end %>
+        
+      
     </div>
   </div>
 </div>

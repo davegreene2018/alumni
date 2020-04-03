@@ -38,6 +38,8 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+    @findstatus = Profile.find(params[:id])
+    
   end
 
   # POST /profiles
@@ -63,6 +65,7 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+    @profile = Profile.find(params[:id])
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to profiles_path, notice: 'Profile was successfully updated.' }

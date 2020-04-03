@@ -16,6 +16,10 @@ class StaticPagesController < ApplicationController
      @users = User.all
   end
 
+  def browseforums
+     @subjects = Subject.all
+  end
+
   def members
   	@totalusers = User.count
   	@limitPages = @totalusers / MEMBERS_PER_PAGE

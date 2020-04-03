@@ -16,7 +16,7 @@ class ForumsController < ApplicationController
     @totalforums = Forum.count
     @limitPages = @totalforums / FORUMS_PER_PAGE
     @page = params.fetch(:page,0).to_i
-    @forums = Forum.offset(@page * FORUMS_PER_PAGE).limit(FORUMS_PER_PAGE)
+    @forums = Forum.all.order('created_at desc').offset(@page * FORUMS_PER_PAGE).limit(FORUMS_PER_PAGE)
     @forumscount = Forum.all
 
    

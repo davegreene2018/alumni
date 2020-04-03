@@ -23,6 +23,7 @@ end
 
   get '/friends' => 'friends#myFriends'
   get '/home' => 'static_pages#home'
+  get '/browseforums' => 'static_pages#browseforums'
   #get '/profile' => 'static_pages#profile'
   get '/profiles/:user_id' => 'profiles#index'
 

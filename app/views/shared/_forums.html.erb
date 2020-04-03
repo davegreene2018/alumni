@@ -36,13 +36,16 @@
       </div>
     <% end %>
    
-     <% if @page < @limitPages%>
-      <%= link_to "Next Page", forums_path(page: @page + 1) %> 
-        <% end %>
-        |
+
       <% if @page > 0%>
-      <%= link_to "Last Page", forums_path(page: @page - 1) %>
+      <%= link_to "Previous", forums_path(page: @page - 1), class:"pagination-previous" %>     
       <% end %>
+
+      <% if @page < @limitPages%>
+      <%= link_to "Next Page", forums_path(page: @page + 1), class:"pagination-next" %> 
+      <% end %>
+        
+      
 
   </div>
 </div>

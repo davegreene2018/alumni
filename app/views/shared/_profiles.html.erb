@@ -53,6 +53,19 @@
            <span class="icon is-small"><i class="fa fa-thumbs-down"></i></span>
             </a>
           </a>
+
+
+          <a class="level-item">
+            <%= link_to edit_profile_path(profile) do %>
+            <span class="icon is-small"><i class="fa fa-pencil"></i></span>
+            <% end %>
+          </a>
+          <a class="level-item">
+            <%= link_to [profile],
+                method: :delete, data: {confirm: "Are you sure ?" } do %>
+            <span class="icon is-small"><i class="fa fa-trash-o"></i></span>
+            <% end %>
+          </a>
           
         </div>
       </nav>
@@ -71,10 +84,14 @@
 
   <% end %>
 </div>
-<% if @page < @limitPages%>
-      <%= link_to "Next Page", profiles_path(page: @page + 1) %> 
-        <% end %>
-        |
       <% if @page > 0%>
-      <%= link_to "Last Page", profiles_path(page: @page - 1) %>
+
+       <%= link_to "Last Page", profiles_path(page: @page - 1), class:"pagination-previous" %>
+
+      <% end %>
+
+     <% if @page < @limitPages%>   
+      
+      <%= link_to "Next Page", profiles_path(page: @page + 1), class:"pagination-next" %> 
+      
       <% end %>

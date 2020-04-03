@@ -43,7 +43,7 @@
      <nav class="navbar is-light" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <%= link_to root_path, class:"navbar-item" do %>
-          <h1 class="title is-5">Alumni Ireland</h1>
+          <h1 class="title is-5"></h1> 
         <% end  %>
       <div class="navbar-burger burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
         <span></span>
@@ -71,9 +71,16 @@
             </div>
           </div>
           <% end %>
+
+           <div class="navbar-item">
+            <div class="field is-grouped">
+              <%= link_to 'Browse forums', browseforums_path, class:"navbar-item" %>
+            </div>
+          </div>
+
           <div class="navbar-item">
             <div class="field is-grouped">
-              <%= link_to 'Forums', forums_path, class:"navbar-item" %>
+              <%= link_to 'Posts', forums_path, class:"navbar-item" %>
             </div>
           </div>
 
@@ -132,21 +139,22 @@
     <%= yield %>
   </div>
 </section>
-<div class="footer is-small has-background-black">
 
-   <div class="columns">
-  <div class="column ">
-    <a href="#"<i class="fa fa-facebook fa-5x"></i></a>
-  </div>
+<div class="footer is-small has-background-black">
+<!--
+   <div class="columns has-text-white">
   <div class="column">
+    <a href="#"><i class="fa fa-facebook fa-5x"></i></a>
+  </div>
+  <div class="column has-text-white">
     
-     <a href="#"<i class="fa fa-instagram fa-5x"></i></a>
+     <a href="#"><i class="fa fa-instagram fa-5x"></i></a>
      
   </div>
-  <div class="column">
-   <a href="#"<i class="fa fa-twitter fa-5x"></i></a>
+  <div class="column has-text-white">
+   <a href="#"><i class="fa fa-twitter fa-5x"></i></a>
   </div>
-  
+  -->
 </div>
 
 

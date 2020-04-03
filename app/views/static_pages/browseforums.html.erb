@@ -1,0 +1,12 @@
+<div class="columns is-multiline is-mobile">
+  <% @subjects.each do |s| %>
+
+  <div class="column is-one-quarter  has-gap">
+  <div class="box is-one-quarter ">
+   <%= link_to s.subject, s %></div>
+ </div>
+ 
+  <% end %>
+</div>
+
+ 

@@ -27,4 +27,15 @@ module ApplicationHelper
     markdown_to_plain_text = Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
     markdown_to_plain_text.render(text).html_safe
   end
+
+
+  def is_friends(friendship)
+    user_signed_in? && current_user.id == friendship.friend_id
+  end
+
+  def status_author(profile)
+    user_signed_in? && current_user.id == profile.user_id
+  end
+
+  
 end
