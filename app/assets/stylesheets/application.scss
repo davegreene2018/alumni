@@ -100,3 +100,22 @@
   text-align: center;
 }
 
+a:link {
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: grey;
+}
+
+/* selected link */
+a:active {
+  color: black;
+}
+
