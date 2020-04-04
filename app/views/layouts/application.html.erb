@@ -85,7 +85,7 @@
           </div>
 
 
-        <% if has_role?(:admin) %> 
+        <% if user_signed_in? && current_user.admin? %>
           
           <div class="navbar-item">
             <div class="field is-grouped">

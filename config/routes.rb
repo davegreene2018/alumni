@@ -23,7 +23,7 @@ end
 
   get '/friends' => 'friends#myFriends'
   get '/home' => 'static_pages#home'
-  get '/browseforums' => 'static_pages#browseforums'
+  get '/browseforums' => 'subjects#browseforums'
   #get '/profile' => 'static_pages#profile'
   get '/profiles/:user_id' => 'profiles#index'
 
@@ -36,6 +36,9 @@ end
   post '/search' => 'forums#search'
   
   get '/search' => 'static_pages#searchforums'
+
+  get '/upgrade/:id' => 'static_pages#upgrade'
+  get '/downgrade/:id' => 'static_pages#downgrade'
 
 
   devise_for :users, controllers: {registrations: 'registrations', confirmations: 'confirmations'}

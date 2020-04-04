@@ -16,10 +16,7 @@ class StaticPagesController < ApplicationController
      @users = User.all
   end
 
-  def browseforums
-     @subjects = Subject.all
-     @totalforums = Forum.count
-  end
+  
 
   def members
   	@totalusers = User.count
@@ -37,5 +34,21 @@ def myposts
      @forums = Forum.all.where('user_id = ?', current_user.id).order('created_at DESC').offset(@page * POSTS_PER_PAGE).limit(POSTS_PER_PAGE)
      
   end
+
+  
+
+   def upgrade
+        @user = User.find_by(id: params[:id])
+        @user.update_attribute(:admin, true)
+        redirect_to :action => :users
+  end
+    
+  def downgrade
+       @user = User.find_by(id: params[:id])
+       @user.update_attribute(:admin, false)
+       redirect_to :action => :users
+  end   
+
+
  
 end

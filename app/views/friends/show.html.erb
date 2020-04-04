@@ -2,7 +2,7 @@
 <% @user.friendships.each do |friendship| %>
       <div class="columns bb-not-last pv10">
         <div class="column is-1">
-          <a href="/members/<%= @user.id %>">
+          <a href="/members/<%= friendship.friend.id %>">
           <%= gravatar_image_tag(friendship.friend.email, class:'border-radius-50', size: 48, alt: friendship.friend.username) %>
         </a>
         </div>
