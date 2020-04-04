@@ -30,7 +30,7 @@ class SubjectsController < ApplicationController
   def browseforums
      @subject = Subject.all
      @subjects = Subject.all
-     current_user.update_attribute :admin, true
+     #current_user.update_attribute :admin, true
   end
 
   # GET /subjects/new
