@@ -9,46 +9,35 @@
         </a>
       </br></br>
 
-         <% if user.username != current_user.username %>
-        
-        <%= link_to "Follow", friendships_path(:friend_id => user),class:"button is-info", :method => :post %>
-      <% end %></br></br>
+      <% if user.username != current_user.username %>
+      <%= link_to "Follow", friendships_path(:friend_id => user),class:"button is-info", :method => :post %>
+      <% end %>
+    </br></br>
+
       <% if current_user.admin? %>
        <p><a href="/upgrade/<%= user.id %>" class="button">Make Admin</a></p>
+        <p><a href="/downgrade/<%= user.id %>" class="button">Remove Admin</a></p>
        <% end %>
         </div>
 
         <div class="column is-10">
-
-
-          
-            <h3><strong><%= user.username%></strong> Joined: <%= time_ago_in_words(user.created_at) %>
-            
-     </h3>
+            <h3><strong><%= user.username%></strong> Joined: <%= time_ago_in_words(user.created_at) %></h3>
             <h5><strong>College:</strong> <%= user.college%> <strong>Studying:</strong> <%= user.studying%></h5>
           <br/>
           <div class="content">
             <%= truncate (user.about), length: 200 %>
-           
           </div>
-
         </div>
-
-        
-
       </div>
     <% end %>
     <div>
-
       <% if @page > 0%>
       <%= link_to "Last Page", members_path(page: @page - 1), class:"pagination-previous" %>
       <% end %>
 
       <% if @page < @limitPages%>
       <%= link_to "Next Page", members_path(page: @page + 1), class:"pagination-next" %> 
-      <% end %>
-        
-      
+      <% end %>  
     </div>
   </div>
 </div>

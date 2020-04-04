@@ -22,17 +22,14 @@
             </p>
           </div>
         </div>
-
-   
-
       </div>
     <% end %>
   </div>
 </div>
  <% if @page < @limitPages%>
-      <%= link_to "Next Page", myposts_path(page: @page + 1) %> 
-        <% end %>
+   <%= link_to "Next Page", myposts_path(page: @page + 1) %> 
+ <% end %>
         |
-      <% if @page > 0%>
-      <%= link_to "Last Page", myposts_path(page: @page - 1) %>
-      <% end %>
+  <% if @page > 0%>
+    <%= link_to "Last Page", myposts_path(page: @page - 1) %>
+  <% end %>

@@ -40,13 +40,14 @@ def myposts
    def upgrade
         @user = User.find_by(id: params[:id])
         @user.update_attribute(:admin, true)
-        redirect_to :action => :users
+        redirect_to members_path(@member), notice: 'successfully added admin.' 
+        
   end
     
   def downgrade
        @user = User.find_by(id: params[:id])
        @user.update_attribute(:admin, false)
-       redirect_to :action => :users
+      redirect_to members_path(@member), notice: 'successfully removed admin.' 
   end   
 
 
