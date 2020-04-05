@@ -18,8 +18,7 @@ class ForumsController < ApplicationController
     @page = params.fetch(:page,0).to_i
     @forums = Forum.all.order('created_at desc').offset(@page * FORUMS_PER_PAGE).limit(FORUMS_PER_PAGE)
     @forumscount = Forum.all
-
-   
+  
    
   end
 
