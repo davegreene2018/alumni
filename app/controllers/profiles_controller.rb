@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+ 
 
   STATUS_PER_PAGE = 5
   
@@ -82,7 +82,7 @@ class ProfilesController < ApplicationController
   def destroy
     @profile.destroy
     respond_to do |format|
-      format.html { redirect_to profiles_url, notice: 'Profile was successfully destroyed.' }
+      format.html { redirect_to profiles_url, notice: 'Status was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -110,9 +110,7 @@ class ProfilesController < ApplicationController
       @profile = Profile.find(params[:id])
     end
 
-    def set_member
-      @member = User.find(params[:id])
-    end
+    
 
 
 

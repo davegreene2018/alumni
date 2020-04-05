@@ -1,97 +1,44 @@
-
-
-  <div class="forums">
-    
+<div class="forums">
     <% @profiles.each do |profile| %>
       <div class="box">
-  <article class="media">
-    <div class="media-left">
-      <figure class="image is-48x48">
-         
-          <%= gravatar_image_tag(profile.user.email, class:'border-radius-50', size: 48, alt: profile.user.username) %>
-       </figure>
-    </div>
-    <div class="media-content">
-      <div class="content">
+        <article class="media">
+          <div class="media-left">
+           <figure class="image is-48x48">
+             <%= gravatar_image_tag(profile.user.email, class:'border-radius-50', size: 48, alt: profile.user.username) %>
+          </figure>
+         </div>
+       <div class="media-content">
+        <div class="content">
             <%= truncate(profile.status, length: 140) %>
-            <p><em><small>Posted <%= time_ago_in_words(profile.created_at ) %> ago in 
-              
-              
-              </small>
-              </em>
-            </p>
-            
-          </div>
+            <p><em><small>Posted <%= time_ago_in_words(profile.created_at ) %> ago in </small></em> </p>
         </div>
+      </div>
 
-        <%# if forum_author(forum) || has_role?(:admin) %>
-
-         <nav class="level is-mobile">
+      <nav class="level is-mobile">
         <div class="level-left">
-          <a class="level-item">
-           
-            <%= profile.likes %>
-            
-          </a>
-          <a class="level-item">
-           <a href="/profiles/like/<%= profile.id %>">
-            <span class="icon is-small"title="<%= profile.id %>"><i class="fa fa-thumbs-up"></i></span>
-            </a>
-          </a>
-          <a class="level-item">
-           
-            
-            
-          </a>
-           <a class="level-item">
-           
-            <%= profile.dislikes %>
-            
-          </a>
-          <a class="level-item">
-            <a href="/profiles/dislike/<%= profile.id %>">
-           <span class="icon is-small"><i class="fa fa-thumbs-down"></i></span>
-            </a>
-          </a>
-
-
           <a class="level-item">
             <%= link_to edit_profile_path(profile) do %>
             <span class="icon is-small"><i class="fa fa-pencil"></i></span>
             <% end %>
           </a>
+
           <a class="level-item">
-            <%= link_to [profile],
-                method: :delete, data: {confirm: "Are you sure ?" } do %>
+            <%= link_to [profile], method: :delete, data: {confirm: "Are you sure ?" } do %>
             <span class="icon is-small"><i class="fa fa-trash-o"></i></span>
             <% end %>
           </a>
           
         </div>
-      </nav>
-          
-
-      
-   
-    
-
-   
-
-      
+      </nav> 
     </article>
-    
   </div>
-
   <% end %>
 </div>
-      <% if @page > 0%>
 
-       <%= link_to "Last Page", profiles_path(page: @page - 1), class:"pagination-previous" %>
+  <% if @page > 0%>
+    <%= link_to "Last Page", profiles_path(page: @page - 1), class:"pagination-previous" %>
+  <% end %>
 
-      <% end %>
-
-     <% if @page < @limitPages%>   
-      
-      <%= link_to "Next Page", profiles_path(page: @page + 1), class:"pagination-next" %> 
-      
-      <% end %>
+  <% if @page < @limitPages%>   
+    <%= link_to "Next Page", profiles_path(page: @page + 1), class:"pagination-next" %> 
+  <% end %>

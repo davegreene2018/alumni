@@ -14,9 +14,12 @@
       <% end %>
     </br></br>
 
-      <% if current_user.admin? %>
+      <% if current_user.admin?%>
+       
        <a href="/upgrade/<%= user.id %>" class="button is-primary">Make Admin</a></br></br>
+       
         <a href="/downgrade/<%= user.id %>" class="button is-danger">Remove Admin</a>
+
        <% end %> 
         </div>
 
