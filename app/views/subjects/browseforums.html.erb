@@ -1,9 +1,9 @@
 <h3 class="title is-2 has-text-grey forum-title">Browse Alumni Ireland forums</h3></br></br>
-<div class="columns is-multiline is-mobile">
+<div class="columns is-multiline">
   <% @subjects.each do |s| %>
-  <div class="column is-one-third is-mobile">
-  <div class="box is-one-third is-mobile">
-   <%= link_to s.subject, s %>
+  <div class="column is-one-third">
+  <div class="box is-one-third">
+   <p class="control"><%= link_to s.subject, s %></p>
    	
    </div>
  </div></br></br></br>
