@@ -1,7 +1,9 @@
 module FriendshipsHelper
 
 	def is_friend(friendship)
-    friendship.friend_id == current_user.id 
+   user_signed_in? && current_user.id == friendship.friend.user_id
   end
+
+
 
 end

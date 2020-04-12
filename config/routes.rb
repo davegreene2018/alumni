@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'static_pages/index'
   get 'static_pages/home'
   get 'static_pages/members'
+  resources :conversations do
+    resources :messages
+  end
   resources :channels 
   resources :subjects 
   resources :friendships
@@ -19,6 +22,7 @@ end
 
   root 'static_pages#home'
   get '/members' => 'static_pages#members'
+
   get '/myposts' => 'static_pages#myposts'
 
   get '/friends' => 'friends#myFriends'

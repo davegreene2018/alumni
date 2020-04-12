@@ -10,8 +10,14 @@ class MembersController < ApplicationController
     @limitPages = @totalusers / MEMBERS_PER_PAGE
     @page = params.fetch(:page,0).to_i
     @users = User.offset(@page * MEMBERS_PER_PAGE).limit(MEMBERS_PER_PAGE)
+
+    @user = User.all
+
+
    
   end
+
+
 
  def show
    @user = User.find(params[:id])

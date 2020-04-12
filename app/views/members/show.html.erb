@@ -5,7 +5,8 @@
   </div>
   <div class="column is-two-quarter">
       <% if @user.username != current_user.username  %>
-      <h1>Add <b><%= @user.username %></b> as a freind to view status updates!</h1> 
+      <h1>Add <b><%= @user.username %></b> as a freind to view status updates comming soon!!!</h1>
+      <h1>You can still message <b><%= @user.username %></b> in the meantime.</h1> 
       <% else %>
 
     <%= render 'profiles/form', profile: @profile %>
@@ -16,7 +17,7 @@
   <% end %>
   </div>
   <div class="column is-one-quarter">
-   
+   <%= render 'profiles/profileright' %>
   </div>
  
 </div>
@@ -24,4 +25,3 @@
 
 
 <br>
-

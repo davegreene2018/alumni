@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  #before_action :set_member, only: [:show, :edit, :update, :destroy, :create]
  
 
   STATUS_PER_PAGE = 5
@@ -12,7 +13,6 @@ class ProfilesController < ApplicationController
    
    @user = User.all.where('id = ?',current_user.id)
    @recentforum = Forum.all.where('user_id = ?', current_user.id).order('created_at DESC')
-   #@profiles = Profile.all.where('user_id = ?', current_user.id).order('created_at DESC')
    @profile = Profile.new
 
    #pagination
@@ -42,14 +42,15 @@ class ProfilesController < ApplicationController
     
   end
 
+
   # POST /profiles
   # POST /profiles.json
   def create
+
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
+    #@profile.isowner = @user.id
 
-    
-    #@profile.isowner = @user.id 
 
     respond_to do |format|
       if @profile.save
@@ -110,7 +111,9 @@ class ProfilesController < ApplicationController
       @profile = Profile.find(params[:id])
     end
 
-    
+    def set_member
+      @member= User.find(params[:id])
+    end
 
 
 
