@@ -24,10 +24,10 @@ Rails.application.configure do
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
- config.assets.initialize_on_precompile = false
-    config.assets.enabled = true
+  config.serve_static_assets = true
+  config.assets.compile = true ## added by dave greene
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false # davegreene change
+  
 
   # Disable Rails's static asset server (Apache or nginx will already do this)  
   config.serve_static_assets = false ##
