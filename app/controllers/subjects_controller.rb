@@ -33,7 +33,13 @@ class SubjectsController < ApplicationController
      @subjects = Subject.all
      @forums = Forum.all
      #current_user.update_attribute :admin, true
-      #@forumscount = @forums.where('subject_id = ?', @subject.id)
+     #@forumscount = @forums.where('subject_id = ?', @subject.id).count
+  
+    
+    
+    
+     
+  
   end
 
   # GET /subjects/new

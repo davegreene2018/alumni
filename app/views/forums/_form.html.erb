@@ -14,10 +14,10 @@
   </div>
 
   <div class="field">
-    <label class="label">Subject</label>
+    <label class="label">Select which section to post to</label>
     <div class="control has-icons-left">
       <span class="select">
-        <%= f.input_field :subject_id, collection:@subjects.map { |s| [s.subject, s.id] }, prompt: "Select subject" %>
+        <%= f.input_field :subject_id, collection:@subjects.map { |s| [s.subject, s.id] }, prompt: "Select section" %>
       </span>
       <span class="icon is-small is-left">
         <i class="fa fa-tag"></i>

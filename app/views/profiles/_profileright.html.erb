@@ -1,15 +1,10 @@
 <% if user_signed_in? && current_user.id != @user.id %>
       <%= link_to "Message #{@user.username}", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class:"button is-info" %>
-    <% else user_signed_in? && current_user.id == @user.id  %>
-      <%= link_to "My conversations", conversations_path, class:"button is-info"%>
     <% end %>
 </br></br>
 
-    <h3 class="title is-5 has-text-black-light"><strong>About me</strong></h3>
-      
-    
-
-    <% @users.each do |user| %>
+<h3 class="title is-5 has-text-black-light"><strong>About <%= @user.username %></strong></h3>
+   <% @users.each do |user| %>
    <p><%= user.about %></p>
    <% end %>
      

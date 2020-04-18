@@ -43,13 +43,15 @@
 .header {
   padding: 10px 16px;
   background: #333;
+
+
   
 }
 
 .bgimg {
   background-position: center;
   background-size: cover;
-  background-image: url("/assets/background.jpeg");
+  background-image: url("/assets/images/background.jpeg");
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -118,4 +120,3 @@ a:hover {
 a:active {
   color: black;
 }
-
