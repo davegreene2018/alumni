@@ -2,14 +2,11 @@
   <div class="level-left">
   <h1 class="title is-2"><%= @subject.subject %></h1>
   </div>
-  <div class="level-right">
-  <% if has_role?(:admin) %>
-    <%= link_to 'Edit Subject', edit_subject_path(@subject), class:"button" %>
-  <% end %>
-  </div>
 </div>
 <hr />
 
 <div class="columns">
  <%= render 'shared/forums' %>
 </div>
+</br></br></br></br></br></br>
+</br></br></br></br></br></br>
