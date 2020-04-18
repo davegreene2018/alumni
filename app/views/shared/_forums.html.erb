@@ -1,9 +1,12 @@
 <div class="column is-8">
   <h3 class="title is-5 has-text-grey-light"><%= @forumscount.count %> forum posts</h3>
+ </br></br>
   <div class="forums"> 
     <% if @forumscount.count == 0 %>
       <div class="content">
         <h3> Be the first to post in this section...</h3>
+      </br>
+        <%= link_to 'Create New Post', new_forum_path, class:"button is-info" %>
       </div>
       <% else %>
     <% @forums.each do |forum| %>
