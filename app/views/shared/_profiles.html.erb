@@ -36,9 +36,9 @@
 </div>
 
   <% if @page > 0%>
-    <%= link_to "Last Page", profiles_path(page: @page - 1), class:"pagination-previous" %>
+    <%= link_to "Last Page", member_path(page: @page - 1), class:"pagination-previous" %>
   <% end %>
 
   <% if @page < @limitPages%>   
-    <%= link_to "Next Page", profiles_path(page: @page + 1), class:"pagination-next" %> 
+    <%= link_to "Next Page", member_path(page: @page + 1), class:"pagination-next" %> 
   <% end %>
