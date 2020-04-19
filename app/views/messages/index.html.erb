@@ -13,6 +13,7 @@
             <div class="inline-block nudge-down-10 pr2"><%= gravatar_for user, size: 48 %></div>
             <div class="inline-block"><strong><%= user.username %></strong> <%= message.message_time %></div>
             <div class="block pt4">
+             
               <div class="f4"><%= sanitize markdown(message.body) %></div>
             </div>
           </div>

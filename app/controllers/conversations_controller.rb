@@ -6,6 +6,15 @@ class ConversationsController < ApplicationController
     @users = User.all
     @user = User.all
     @conversations = Conversation.all
+
+    @mymessages = Message.all.where('user_id = ?', current_user.id)
+    @messagenotification = @mymessages.all.where('read = ?', false).count
+
+     if @mymessages.length > 1
+      @display = "You have no messages to show"
+    else 
+      @display = ""
+    end 
   end
 
   def create

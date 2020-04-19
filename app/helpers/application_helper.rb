@@ -44,4 +44,5 @@ module ApplicationHelper
     image_tag(gravatar_url, alt: user.username, class: "border-radius-50")
   end
   
+   
 end
