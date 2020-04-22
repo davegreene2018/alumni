@@ -2,7 +2,7 @@
   <h3 class="title is-5 has-text-black-light">Latest forum posts</h3>
   <div class="forums">
     <% @forums.each do |forum| %>
-      <div class="columns bb-not-last pv10">
+      <div class="columns">
         <div class="column is-1">
           <%= gravatar_image_tag(forum.user.email, class:'border-radius-50', size: 48, alt: forum.user.username) %>
         </div>
@@ -22,9 +22,6 @@
             </p>
           </div>
         </div>
-
-   
-
       </div>
     <% end %>
   </div>

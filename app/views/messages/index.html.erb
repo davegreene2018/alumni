@@ -14,7 +14,7 @@
             <div class="inline-block"><strong><%= user.username %></strong> <%= message.message_time %></div>
             <div class="block pt4">
              
-              <div class="f4"><%= sanitize markdown(message.body) %></div>
+              <div class="f4"><%= message.body %></div>
             </div>
           </div>
         </article>

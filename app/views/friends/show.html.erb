@@ -1,26 +1,19 @@
-
 <% @user.friendships.each do |friendship| %>
-      <div class="columns bb-not-last pv10">
+      <div class="columns">
         <div class="column is-1">
           <a href="/members/<%= friendship.friend.id %>">
           <%= gravatar_image_tag(friendship.friend.email, class:'border-radius-50', size: 48, alt: friendship.friend.username) %>
         </a>
         </div>
         <div class="column is-10">
-          
-            <h3><strong><%= friendship.friend.username%></strong> Joined: <%= time_ago_in_words(friendship.friend.created_at) %> 
-            
-      </h3>
-            <h5><strong>College:</strong> <%= friendship.friend.college%> <strong>Studying:</strong> <%= friendship.friend.studying%></h5>
+          <h3><strong><%= friendship.friend.username%></strong> Joined: <%= time_ago_in_words(friendship.friend.created_at) %></h3>
+            <h5><strong>College:</strong> <%= friendship.friend.college%> <strong>Studying:</strong> <%= friendship.friend.studying%></h5> 
           <br/>
+
           <div class="content">
             <%= truncate (friendship.friend.about), length: 200 %>
-           
           </div>
-           <%= link_to "remove", friendship,class:"button is-info", :method => :delete %>
         </div>
-
-        
-
+        <%= link_to "remove", friendship,class:"button is-info", :method => :delete %>
       </div>
     <% end %>

@@ -10,49 +10,49 @@
         <p>
           <strong><%= reply.user.username %></strong> <small><%= time_ago_in_words(reply.created_at) %></small>
           <br/>
-          <%= markdown(reply.reply)%>
+          <%=reply.reply%>
         </p>
       </div>
       
       <nav class="level is-mobile">
         <div class="level-left">
           <a class="level-item">
-           
-            <%= reply.likes %>
-            
+            <%= reply.likes %> 
           </a>
+
           <a class="level-item">
            <a href="/replies/like/<%= reply.id %>">
             <span class="icon is-small"title="<%= reply.id %>"><i class="fa fa-thumbs-up"></i></span>
             </a>
           </a>
-          <a class="level-item">
-           
-            
-            
+
+          <a class="level-item">  
           </a>
+
            <a class="level-item">
-           
             <%= reply.dislikes %>
-            
           </a>
+
           <a class="level-item">
             <a href="/replies/dislike/<%= reply.id %>">
            <span class="icon is-small"><i class="fa fa-thumbs-down"></i></span>
             </a>
           </a>
+
           <% if reply_is_owner(reply) || current_user.admin? %>
           <a class="level-item">
             <%= link_to edit_forum_reply_path(reply.forum, reply) do %>
             <span class="icon is-small"><i class="fa fa-pencil"></i></span>
             <% end %>
           </a>
+
           <a class="level-item">
             <%= link_to [reply.forum, reply],
                 method: :delete, data: {confirm: "Are you sure ?" } do %>
             <span class="icon is-small"><i class="fa fa-trash-o"></i></span>
             <% end %>
           </a>
+          
         </div>
       </nav>
       <% end %>

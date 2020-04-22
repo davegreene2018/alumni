@@ -13,7 +13,7 @@
         <% end %>
       </div>
     </div>
-    <div class="content"><%= markdown(@forum.content) %></div>
+    <div class="content"><%= @forum.content %></div>
     <h2 class="subtitle is-5 has-text-grey"><%= @forum.replies.count %> Replies</h2>
     <div id="forum-replies">
       <%= render @forum.replies.order(likes: :desc) %>

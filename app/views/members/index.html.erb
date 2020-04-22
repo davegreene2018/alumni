@@ -2,16 +2,16 @@
   <div class="column is-10">
   <div class="forums">
     <% @users.each do |user| %>
-      <div class="columns bb-not-last pv10">
+      <div class="columns">
         <div class="column is-1">
           <a href="/members/<%= user.id %>">
           <%= gravatar_image_tag(user.email, class:'border-radius-50', size: 48, alt: user.username) %>
         </a>
       </br></br>
-
-    
       </div>
-</br></br>
+
+      </br></br>
+
         <div class="column is-10">
             <h3><strong><%= user.username%></strong> Joined: <%= time_ago_in_words(user.created_at) %></h3>
             <h5><strong>College:</strong> <%= user.college%> <strong>Studying:</strong> <%= user.studying%></h5>

@@ -22,9 +22,7 @@
 });
 
 </script>
-
   </head>
-
   <body>
     <div class="header">
      <section class="hero is-smallx2"> <div class="hero-body"> <div class="container has-text-centered"> <h1 class="title has-text-white">Alumni Ireland</h1>
@@ -41,6 +39,8 @@
       <p class="alert"><%= alert %></p>
     </div>
     <% end %>
+
+
      <nav class="navbar is-light" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <%= link_to root_path, class:"navbar-item" do %>
@@ -55,70 +55,43 @@
 
       <div class="navbar-menu" id="navMenu">
         <div class="navbar-end">
-         
-
-         
-
-         <div class="navbar-item">
+         <div class="navbar-item has-dropdown is-hoverable">
             <div class="field is-grouped">
-              <%= link_to 'Home', home_path, class:"navbar-item" %>
+              <%= link_to 'Home', home_path, class:"navbar-link" %>
+               <div class="navbar-dropdown is-right">
+                <%= link_to 'Home', home_path, class:"navbar-item" %>
+                <% if user_signed_in? %>
+                <%= link_to 'Browse Members', members_path, class:"navbar-item" %>
+                 <% end %>
+               </div>
             </div>
           </div>
 
-          <% if user_signed_in? %>
-          <div class="navbar-item">
+            <div class="navbar-item has-dropdown is-hoverable">
             <div class="field is-grouped">
-              <%= link_to 'Members', members_path, class:"navbar-item" %>
-            </div>
-          </div>
-          <% end %>
-
-           <div class="navbar-item">
-            <div class="field is-grouped">
-              <%= link_to 'Browse forums', browseforums_path, class:"navbar-item" %>
-            </div>
-          </div>
-
-          <div class="navbar-item">
-            <div class="field is-grouped">
-              <%= link_to 'Posts', forums_path, class:"navbar-item" %>
+              <%= link_to 'Browse Sections', browseforums_path, class:"navbar-link" %>
+              <div class="navbar-dropdown is-right">
+                 <%= link_to 'All Posts', forums_path, class:"navbar-item" %>
+                  <%= link_to 'New Post', new_forum_path, class:"navbar-item" %>
+               </div>
             </div>
           </div>
 
 
-       
-
-          <% if user_signed_in? %>
-          
-           <div class="navbar-item">
-              <div class="field is-grouped">
-               <%= link_to "Messages", conversations_path, class: "navbar-item" %>
-             </div>       
-          </div>
-
-           <div class="navbar-item is-hoverable">
-            <div class="field is-grouped">
-              <%= link_to 'New Post', new_forum_path, class: "navbar-item" %>
-            </div>
-          </div>
-
-           <% if user_signed_in? && current_user.admin? %>
-          
+          <% if user_signed_in? %> 
+           <% if user_signed_in? && current_user.admin? %> 
          <div class="navbar-item has-dropdown is-hoverable">
             <div class="field is-grouped">
               <%= link_to 'New forum section', new_subject_path, class: "navbar-link" %>
                <div class="navbar-dropdown is-right">
                  <%= link_to "New forum section", new_subject_path, class: "navbar-item" %>
-                  <%= link_to "Edit forum section", subjects_path, class: "navbar-item" %>
-                
+                  <%= link_to "Edit forum section", subjects_path, class: "navbar-item" %>  
                </div>
             </div>
           </div>
-        
         <% end %>
         
           <div class="navbar-item has-dropdown is-hoverable">
-           
             <%= link_to 'Account', edit_user_registration_path, class: "navbar-link" %>
             <div class="navbar-dropdown is-right">
                 <a href="/members/<%= current_user.id %>" class="navbar-item">
@@ -126,27 +99,18 @@
                 </a>
                <%= link_to "Messages", conversations_path, class:"navbar-item" %>
               <%= link_to "Edit profile", edit_user_registration_path, class:"navbar-item" %>
-               <%= link_to "My posts", myposts_path, class:"navbar-item" %>
-             
+               <%= link_to "My posts", myposts_path, class:"navbar-item" %> 
               <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"navbar-item" %>
             </div>
           </div>
          <% else %>
          <div class="navbar-item">
           <div class="field is-grouped">
-
-           
-            <p class="control">
-              <%= link_to "Sign In", new_user_session_path, class: "button is-light"%>
-            </p>
-
-            <p class="control">
-              <%= link_to "Sign up", new_user_registration_path, class: "button is-light" %>
-            </p>
+            <p class="control"> <%= link_to "Sign In", new_user_session_path, class: "button is-light"%></p>
+            <p class="control"><%= link_to "Sign up", new_user_registration_path, class: "button is-light" %></p>
           </div>
           </div>
           <% end %>
-
         </div>
     </div>
   </nav>
