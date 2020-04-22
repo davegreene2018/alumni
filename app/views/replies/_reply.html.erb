@@ -39,7 +39,7 @@
             </a>
           </a>
 
-          <% if reply_is_owner(reply) || current_user.admin? %>
+          <% if reply_is_owner(reply) %>
           <a class="level-item">
             <%= link_to edit_forum_reply_path(reply.forum, reply) do %>
             <span class="icon is-small"><i class="fa fa-pencil"></i></span>

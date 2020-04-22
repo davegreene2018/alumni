@@ -1,20 +1,38 @@
-<div class="columns">
-  <div class="column is-8">
-    <h1 class="title is-2 has-text-black forum-title"><%= @forum.title %></h1>
-    <h3 class="subtitle is-4 has-text-black-lighter">posted by <%= @forum.user.username %> in <%= link_to @forum.subject.subject, @forum.subject %> section</h3>
-    <div class="level">
-      <div class="level-left"></div>
-      <div class="level-right">
-        <% if forum_is_owner(@forum) %>
-        <div class="buttons">
-            <%= link_to 'Edit Forum', edit_forum_path(@forum), class:'button'%>
-            <%= link_to 'Delete', forum_path(@forum), method: :delete, data: { confirm: "Delete forum?" }, class:'button' %>
-        </div>
-        <% end %>
-      </div>
+<div class="column is-full">
+  <div class="forums"> 
+ <article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <%= gravatar_image_tag(@forum.user.email, class:'border-radius-50', size: 48, alt: @forum.user.username) %>
+    </p>
+  </figure>
+   <div class="column is-8">
+            <h1 class="title is-8"><%= @forum.title %></h1>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong><%= @forum.user.username %></strong> <small>Posted <%= time_ago_in_words(@forum.created_at) %> ago</small> in
+              <% if @forum.subject %>
+                <%= link_to @forum.subject.subject, @forum.subject %>
+              <% end %> section
+        <br>
+         <%= @forum.content %>
+      </p>
     </div>
-    <div class="content"><%= @forum.content %></div>
-    <h2 class="subtitle is-5 has-text-grey"><%= @forum.replies.count %> Replies</h2>
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <a class="level-item">
+          <span class="icon is-small"><i class="fa fa-reply"></i></span>
+        </a>
+        <p class="level-item">
+          <% if @forum.replies.count == 0 %> 
+          <%= @forum.replies.count %> Replies
+          <% else %>
+           <%= @forum.replies.count %> Reply
+           <% end %>
+        </p>
+      </div>
+    </nav>
     <div id="forum-replies">
       <%= render @forum.replies.order(likes: :desc) %>
     </div>
@@ -27,4 +45,23 @@
       <%= link_to 'Sign up', new_user_registration_path %> for one.</p>
     <% end %>
   </div>
+  </div>
+  <div class="media-right">
+    <% if user_signed_in? %>
+        <% if forum_is_owner(@forum) || current_user.admin? %> 
+        <div class="column has-text-right">
+          <%= link_to 'Edit', edit_forum_path(@forum), class:'button' %>
+          <%= link_to 'Delete', forum_path(@forum), method: :delete, data: { confirm: "Delete forum?" }, class:'button' %>
+
+        </div>
+        <% end %>
+        <% end %>
+  </div>
+</article>
 </div>
+</div>
+
+
+
+
+
