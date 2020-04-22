@@ -25,11 +25,7 @@
           <span class="icon is-small"><i class="fa fa-reply"></i></span>
         </a>
         <p class="level-item">
-          <% if @forum.replies.count == 0 %> 
           <%= @forum.replies.count %> Replies
-          <% else %>
-           <%= @forum.replies.count %> Reply
-           <% end %>
         </p>
       </div>
     </nav>
