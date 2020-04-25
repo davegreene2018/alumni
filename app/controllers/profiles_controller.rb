@@ -54,8 +54,8 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to profiles_path, notice: 'Successfully updated status.' }
-        format.json { render :show, status: :created, location: @profile }
+        format.html { redirect_to request.referrer, notice: 'Successfully created status.' }
+        format.json { render :show, status: :created, location: @member }
       else
         format.html { render :new }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
@@ -69,7 +69,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     respond_to do |format|
       if @profile.update(profile_params)
-        format.html { redirect_to profiles_path, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to profiles_path, notice: 'Status was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit }
